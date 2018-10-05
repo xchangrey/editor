@@ -4785,7 +4785,7 @@ $(document).on('focus', '.Editor .doc', function(e) {
 // Get all the DOM Nodes to make into rich textarea
 var doc1 = document.getElementById("editor");
 var doc2 = document.getElementById("editor1");
-
+var doc3 = document.getElementById("editor2");
 
 // Instantiate the DOM Nodes
 var editorInstanceOne = new Squire(doc1, {
@@ -4814,6 +4814,19 @@ var editorInstanceTwo = new Squire(doc2, {
   }
 });
 
+var editorInstanceThree = new Squire(doc3, {
+    blockTag: "p",
+    blockAttributes: { class: "ui_qtext_para" },
+    tagAttributes: {
+        a: {
+            class: "external_link",
+            target: "_blank",
+            rel: "noopener nofollow",
+            "data-qt-tooltip": ""
+        }
+    }
+});
+
 // Squire instance of the editor
 var editor = null;
 
@@ -4827,6 +4840,10 @@ function clickFn(e){
 
     if(x.id === "editor1"){
         editor = editorInstanceTwo;
+    }
+
+    if (x.id === "editor2") {
+        editor = editorInstanceThree;
     }
 
     return editor;
