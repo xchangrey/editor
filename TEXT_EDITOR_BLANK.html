@@ -19,13 +19,13 @@
 <div class="Form">
 
 <div>
-<div class="Editor">
-  <div data-group="js-editable" styles="position:relative;">
-        <div id="editor" class="doc ui_qtext_rendered_qtext" contenteditable="true" data-kind="doc" placeholder="" style="min-height: 500px;"></div>
-  </div>
-  <div data-group="js-editable" styles="position:relative;">
-    <div id="editor1" class="doc ui_qtext_rendered_qtext" contenteditable="true" data-kind="doc" placeholder="" style="min-height: 500px;">
-  </div>
+<div class="Editor" onClick="clickFn(event)">
+
+    <div id="editor" class="doc ui_qtext_rendered_qtext" contenteditable="true" data-kind="doc" placeholder="" style="min-height: 300px;"></div>
+
+
+    <div id="editor1" class="doc ui_qtext_rendered_qtext" contenteditable="true" data-kind="doc" placeholder="" style="min-height: 300px;background: grey;"></div>
+
 </div>
     <div class="editor_toolbar">
         <div class="scroller">
@@ -162,10 +162,10 @@
                         <span>
                           <span class="emoji-outer emoji-sizer" style="background-position:70% 10%;">
                           </span>
-                        </span>
-                      </a>
                       <a class="p-emoji_picker__list_item">
                         <span>
+                        </span>
+                      </a>
                           <span class="emoji-outer emoji-sizer" style="background-position:10% 25%;">
                           </span>
                         </span>

@@ -4782,60 +4782,64 @@ $(document).on('focus', '.Editor .doc', function(e) {
 });
 
 /************************************** Initialize Editor **************************************/
-// Get all the instances of the doc
-
-var divs = Array.from(document.getElementsByClassName( 'doc'));
-
-// function instantiateSquire(item) {
-//     editor = new Squire(item, {
-//         blockTag: "p",
-//         blockAttributes: { class: "ui_qtext_para" },
-//         tagAttributes: {
-//             a: {
-//                 class: "external_link",
-//                 target: "_blank",
-//                 rel: "noopener nofollow",
-//                 "data-qt-tooltip": ""
-//             }
-//         }
-//     })
-// }
-var editor;
-divs.forEach(div =>(
-    div.addEventListener("click", function(e) {
-        e.preventDefault;
-        editor = new Squire(div, {
-            blockTag: "p",
-            blockAttributes: { class: "ui_qtext_para" },
-            tagAttributes: {
-                a: {
-                    class: "external_link",
-                    target: "_blank",
-                    rel: "noopener nofollow",
-                    "data-qt-tooltip": ""
-                }
-            }
-        })
-    })
-))
+// Get all the DOM Nodes to make into rich textarea
+var doc1 = document.getElementById("editor");
+var doc2 = document.getElementById("editor1");
 
 
-    
+// Instantiate the DOM Nodes
+var editorInstanceOne = new Squire(doc1, {
+    blockTag: "p",
+    blockAttributes: { class: "ui_qtext_para" },
+    tagAttributes: {
+        a: {
+            class: "external_link",
+            target: "_blank",
+            rel: "noopener nofollow",
+            "data-qt-tooltip": ""
+        }
+    }
+})
+
+var editorInstanceTwo = new Squire(doc2, {
+  blockTag: "p",
+  blockAttributes: { class: "ui_qtext_para" },
+  tagAttributes: {
+    a: {
+      class: "external_link",
+      target: "_blank",
+      rel: "noopener nofollow",
+      "data-qt-tooltip": ""
+    }
+  }
+});
+
+// Squire instance of the editor
+var editor = null;
+
+// Check which DOM node is currently on target
+function clickFn(e){
+    var x = e.target;
+
+    if(x.id === "editor"){
+        editor = editorInstanceOne;
+    }
+
+    if(x.id === "editor1"){
+        editor = editorInstanceTwo;
+    }
+
+    return editor;
+}
 
 
 
 
 
-// $(document).on('click', '.Editor .doc', function(e){
-//     instantiateSquire(div);
-// })
-
-// $(document).on('click', '#editor1', function(e) {
-//     instantiateSquire(div1);
-// })
 
 
-   
+
+
 
 
 
