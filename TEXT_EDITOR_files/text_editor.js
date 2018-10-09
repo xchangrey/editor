@@ -4782,83 +4782,66 @@ $(document).on('focus', '.Editor .doc', function(e) {
 });
 
 /************************************** Initialize Editor **************************************/
-// Get all the DOM Nodes to make into rich textarea
-var doc1 = document.getElementById("editor");
-var doc2 = document.getElementById("editor1");
-var doc3 = document.getElementById("editor2");
 
-// Instantiate the DOM Nodes
-var editorInstanceOne = new Squire(doc1, {
-    blockTag: "p",
-    blockAttributes: { class: "ui_qtext_para" },
-    tagAttributes: {
-        a: {
+// Set a collection of ids
+var ids = [];
+
+// set the .doc id attribute
+var id = null;
+
+// save the .doc as txtarea
+var txtarea = null;
+
+// set the collection of Squire instances
+var editorInstances = {};
+
+// Get all .doc
+var docs = Array.from(document.querySelectorAll(".doc"));
+
+
+// Add id to the DOM nodes
+$(window).on('load', docs, function(e){
+    for (var i = 0; i < docs.length; i++) {
+        docs[i].setAttribute("id", `editor${i}`);
+        id = docs[i].id;
+        ids.push(id);
+    };
+
+    //Pass in the ids array to create Squire instances
+    instantiateEditor(ids);
+
+    // Add click event to every DOM Node to make into rich textarea
+    docs.forEach(childDoc => childDoc.addEventListener('click', clickFn));
+    
+});
+
+
+// Make instances of Squire editor;
+function instantiateEditor(arr){
+    arr.forEach(function(item, index) {
+    txtarea = document.getElementById(item);
+      editorInstances[item] = new Squire(txtarea, {
+        blockTag: "p",
+        blockAttributes: { class: "ui_qtext_para" },
+        tagAttributes: {
+          a: {
             class: "external_link",
             target: "_blank",
             rel: "noopener nofollow",
             "data-qt-tooltip": ""
+          }
         }
-    }
-})
-
-var editorInstanceTwo = new Squire(doc2, {
-  blockTag: "p",
-  blockAttributes: { class: "ui_qtext_para" },
-  tagAttributes: {
-    a: {
-      class: "external_link",
-      target: "_blank",
-      rel: "noopener nofollow",
-      "data-qt-tooltip": ""
-    }
-  }
-});
-
-var editorInstanceThree = new Squire(doc3, {
-    blockTag: "p",
-    blockAttributes: { class: "ui_qtext_para" },
-    tagAttributes: {
-        a: {
-            class: "external_link",
-            target: "_blank",
-            rel: "noopener nofollow",
-            "data-qt-tooltip": ""
-        }
-    }
-});
-
-// Squire instance of the editor
-var editor = null;
-
-// Check which DOM node is currently on target
-function clickFn(e){
-    var x = e.target;
-
-    if(x.id === "editor"){
-        editor = editorInstanceOne;
-    }
-
-    if(x.id === "editor1"){
-        editor = editorInstanceTwo;
-    }
-
-    if (x.id === "editor2") {
-        editor = editorInstanceThree;
-    }
-
-    return editor;
+      });
+    });
 }
 
+// Instantiate editor 
+var editor =  null;
 
-
-
-
-
-
-
-
-
-
+// Pass the correct Squire instance saved in editorInsatances array to the editor
+function clickFn(event) {
+    editor = editorInstances[this.id];
+};
 
 
 
