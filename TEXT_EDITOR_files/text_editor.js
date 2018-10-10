@@ -4782,12 +4782,8 @@ $(document).on('focus', '.Editor .doc', function(e) {
 });
 
 /************************************** Initialize Editor **************************************/
-
 // Set a collection of ids
 let ids = [];
-
-// set the .doc id attribute
-let id = null;
 
 // set the collection of Squire instances
 let editorInstances = {};
@@ -4798,7 +4794,8 @@ let docs = Array.from(document.querySelectorAll(".doc"));
 
 // Add id to the DOM nodes
 $(window).on('load', docs, function(e){
-    for (var i = 0; i < docs.length; i++) {
+    for (let i = 0; i < docs.length; i++) {
+        let id = null;
         docs[i].setAttribute("id", `editor${i}`);
         id = docs[i].id;
         ids.push(id);
