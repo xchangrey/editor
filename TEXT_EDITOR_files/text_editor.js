@@ -4788,7 +4788,7 @@ let ids = [];
 // set the collection of Squire instances
 let editorInstances = {};
 
-// Instantiate editor 
+// set editor 
 let editor = null;
 
 // Get all .doc
