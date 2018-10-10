@@ -4788,6 +4788,9 @@ let ids = [];
 // set the collection of Squire instances
 let editorInstances = {};
 
+// Instantiate editor 
+let editor = null;
+
 // Get all .doc
 let docs = Array.from(document.querySelectorAll(".doc"));
 
@@ -4828,9 +4831,6 @@ function instantiateEditor(arr){
       });
     });
 }
-
-// Instantiate editor 
-let editor =  null;
 
 // Pass the correct Squire instance saved in editorInsatances array to the editor
 function clickFn(event) {
