@@ -4784,19 +4784,16 @@ $(document).on('focus', '.Editor .doc', function(e) {
 /************************************** Initialize Editor **************************************/
 
 // Set a collection of ids
-var ids = [];
+let ids = [];
 
 // set the .doc id attribute
-var id = null;
-
-// save the .doc as txtarea
-var txtarea = null;
+let id = null;
 
 // set the collection of Squire instances
-var editorInstances = {};
+let editorInstances = {};
 
 // Get all .doc
-var docs = Array.from(document.querySelectorAll(".doc"));
+let docs = Array.from(document.querySelectorAll(".doc"));
 
 
 // Add id to the DOM nodes
@@ -4819,7 +4816,7 @@ $(window).on('load', docs, function(e){
 // Make instances of Squire editor;
 function instantiateEditor(arr){
     arr.forEach(function(item, index) {
-    txtarea = document.getElementById(item);
+    let txtarea = document.getElementById(item);
       editorInstances[item] = new Squire(txtarea, {
         blockTag: "p",
         blockAttributes: { class: "ui_qtext_para" },
@@ -4836,7 +4833,7 @@ function instantiateEditor(arr){
 }
 
 // Instantiate editor 
-var editor =  null;
+let editor =  null;
 
 // Pass the correct Squire instance saved in editorInsatances array to the editor
 function clickFn(event) {
